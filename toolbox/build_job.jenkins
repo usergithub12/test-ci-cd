@@ -29,12 +29,12 @@ pipeline  {
                 }
             }
         }
-        stage("docker push") {
+    stage("docker push") {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push ann1h1lation/test_project1:latest
+                docker push ann1h1lation/students-book:latest
                 '''
             }
-        }
+    }
 }

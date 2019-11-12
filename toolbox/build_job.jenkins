@@ -18,7 +18,6 @@ pipeline  {
                 }
             }
         }
-    }
     stage("docker login") {
             steps {
                 echo " ============== docker login =================="
@@ -33,8 +32,9 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push ann1h1lation/students-book:latest
+                docker push ann1h1lation/test_project1:latest
                 '''
             }
+        }
     }
 }

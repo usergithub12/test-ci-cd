@@ -1,0 +1,25 @@
+- name: Pool test_project1
+  hosts: staging
+  become: true
+  tasks:
+
+  - name: stop all docker containers
+    shell: docker stop $(docker ps -a -q)
+    ignore_errors: true
+
+  - name: remove all docker containers
+    shell: docker rm $(docker ps -a -q)
+    ignore_errors: true
+
+  - name: Remove image
+    docker_image:
+      name: ann1h1lation/test_project1
+      state: absent
+
+  - name: Pull image
+    docker_image:
+      name: ann1h1lation/test_project1
+
+  - name: Start ann1h1lation/test_project1
+    shell: docker run -d -p 80:5000 ann1h1lation/test_project1
+ 
